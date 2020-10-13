@@ -15,7 +15,7 @@
         <h1>Nuevo estudiante</h1>
         <a href="../index.html">Regresar</a>
         <hr>
-        <form name="formGuardar" action="guardar">
+        <form name="formGuardar" action="../guardar">
             ID:             <input type="text" name="id" value="" /> <br/>
             Nombre:         <input type="text" name="nombre" value="" /> <br/>
             Apellido:       <input type="text" name="apellido" value="" /> <br/>
