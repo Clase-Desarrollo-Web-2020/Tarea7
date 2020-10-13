@@ -1,6 +1,6 @@
 <%-- 
-    Document   : editar
-    Created on : 13 oct. 2020, 15:34:09
+    Document   : remove
+    Created on : 13 oct. 2020, 16:45:25
     Author     : Emily
 --%>
 
@@ -9,18 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar</title>
+        <title>Remove</title>
     </head>
     <body>
-        <h1>Editar estudiante</h1>
+        <h1>Eliminar estudiante</h1>
         <a href="../index.html">Regresar</a>
         <hr>
-        <form name="formGuardar" action="../editar">
+        <form name="formGuardar" action="../remove">
             ID:             <input type="text" name="id" value="" /> <br/>
             Nombre:         <input type="text" name="nombre" value="" /> <br/>
             Apellido:       <input type="text" name="apellido" value="" /> <br/>
             Calificacion:   <input type="text" name="calificacion" value="" /> <br/>
-            <input type="submit" value="Borrar" />
+            <input type="submit" value="Guardar" />
         </form>
     </body>
 </html>
