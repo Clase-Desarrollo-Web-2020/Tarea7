@@ -5,10 +5,9 @@
  */
 package servlets;
 
-import beans.*;
+import beans.EstudiantesFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Emily
  */
-@WebServlet(name = "listadoestudiantes", urlPatterns = {"/listadoestudiantes"})
-public class listadoestudiantes extends HttpServlet {
+@WebServlet(name = "editar", urlPatterns = {"/editar"})
+public class editar extends HttpServlet {
 
     @EJB
     private EstudiantesFacadeLocal estudiantesFacade;
@@ -37,42 +36,40 @@ public class listadoestudiantes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+
+        String id = request.getParameter("id");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String calificacion = request.getParameter("calificacion");
+
+        PrintWriter out = response.getWriter();
+        try {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Listar Estudiantes</title>");
+            out.println("<title>Servlet ServletGuardar</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet listadoestudiantes de " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletGuardar at " + request.getContextPath() + "</h1>");
+
+            beans.Estudiantes a = new beans.Estudiantes();
+            a.setId(Integer.parseInt(id));
+            a.setNombre(nombre);
+            a.setApellido(apellido);
+            a.setCalificacion(Integer.parseInt(calificacion));
+
+            estudiantesFacade.edit(a);
+
+            out.println("Registro guardado exitosamente!");
+
+        } catch (Exception e) {
+            out.println("Hubo un problema al guardar el registro!");
+        } finally {
             out.println("<a href=\"index.html\">Regresar</a>");
-            out.println("<hr>");
-
-            //Tabla de estudiantes
-            //Cabecera
-            out.println("<table border=1 style='border-collapse: collapse';>");
-            out.println("<th>ID</th>");
-            out.println("<th>Nombre</th>");
-            out.println("<th>Apellido</th>");
-            out.println("<th>Calificacion</th>");
-            //Lineas
-            List estudiantes = estudiantesFacade.findAll();
-            for (int i = 0; i < estudiantes.size(); i++) {
-                beans.Estudiantes e = (beans.Estudiantes) estudiantes.get(i);
-
-                out.println("<tr>");
-                out.println("<td>" + e.getId().toString() + "</td>");
-                out.println("<td>" + e.getNombre() + "</td>");
-                out.println("<td>" + e.getApellido() + "</td>");
-                out.println("<td>" + e.getCalificacion() + "</td>");
-                out.println("</tr>");
-            }
-            out.println("</table>");
             out.println("</body>");
             out.println("</html>");
+            out.close();
         }
     }
 
