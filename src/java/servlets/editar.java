@@ -61,10 +61,10 @@ public class editar extends HttpServlet {
 
             estudiantesFacade.edit(a);
 
-            out.println("Registro guardado exitosamente!");
+            out.println("Registro editado exitosamente!");
 
         } catch (Exception e) {
-            out.println("Hubo un problema al guardar el registro!");
+            out.println("Hubo un problema al editar el registro!");
         } finally {
             out.println("<a href=\"index.html\">Regresar</a>");
             out.println("</body>");

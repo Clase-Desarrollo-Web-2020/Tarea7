@@ -62,7 +62,7 @@ public class remove extends HttpServlet {
 
             estudiantesFacade.remove(a);
 
-            out.println("Registro guardado exitosamente!");
+            out.println("Registro eliminado exitosamente!");
 
         } catch (Exception e) {
             out.println("Hubo un problema al eliminar el registro!");

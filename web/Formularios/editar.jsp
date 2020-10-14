@@ -20,7 +20,7 @@
             Nombre:         <input type="text" name="nombre" value="" /> <br/>
             Apellido:       <input type="text" name="apellido" value="" /> <br/>
             Calificacion:   <input type="text" name="calificacion" value="" /> <br/>
-            <input type="submit" value="Borrar" />
+            <input type="submit" value="Editar" />
         </form>
     </body>
 </html>
